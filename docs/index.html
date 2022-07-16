@@ -1,404 +1,264 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Forca</title>
+    <title>Criptografia</title>
+
+    <img class="alura" src="https://www.alura.com.br/assets/img/alura-share.1647533642.png" height="110" width="110">
+    <br>
 </head>
+
 <body>
-    <div class="container">
-        <div id="imagem">
-        </div>
-        <div id="palavra-secreta">
-            <!-- <div class="letras"></div> -->
-        </div>
-        <div id="teclado">
-            <div class="teclas">
-                <button id ="teclaA" onclick="verificaLetraEscolhida('A')">A</button>
-                <button id ="teclaB"onclick="verificaLetraEscolhida('B')">B</button>
-                <button id ="teclaC"onclick="verificaLetraEscolhida('C')">C</button>
-                <button id ="teclaD"onclick="verificaLetraEscolhida('D')">D</button>
-                <button id ="teclaE"onclick="verificaLetraEscolhida('E')">E</button>
-                <button id ="teclaF"onclick="verificaLetraEscolhida('F')">F</button>
-                <button id ="teclaG"onclick="verificaLetraEscolhida('G')">G</button>
-                <button id ="teclaH"onclick="verificaLetraEscolhida('H')">H</button>
-                <button id ="teclaI"onclick="verificaLetraEscolhida('I')">I</button>
-            </div>
-            <div class="teclas">
-                <button id ="teclaJ"onclick="verificaLetraEscolhida('J')">J</button>
-                <button id ="teclaK"onclick="verificaLetraEscolhida('K')">K</button>
-                <button id ="teclaL"onclick="verificaLetraEscolhida('L')">L</button>
-                <button id ="teclaM"onclick="verificaLetraEscolhida('M')">M</button>
-                <button id ="teclaN"onclick="verificaLetraEscolhida('N')">N</button>
-                <button id ="teclaO"onclick="verificaLetraEscolhida('O')">O</button>
-                <button id ="teclaP"onclick="verificaLetraEscolhida('P')">P</button>
-                <button id ="teclaQ"onclick="verificaLetraEscolhida('Q')">Q</button>
-                <button id ="teclaR"onclick="verificaLetraEscolhida('R')">R</button>
-            </div>
-            <div class="teclas">
-                <button id ="teclaS"onclick="verificaLetraEscolhida('S')">S</button>
-                <button id ="teclaT"onclick="verificaLetraEscolhida('T')">T</button>
-                <button id ="teclaU"onclick="verificaLetraEscolhida('U')">U</button>
-                <button id ="teclaV"onclick="verificaLetraEscolhida('V')">V</button>
-                <button id ="teclaX"onclick="verificaLetraEscolhida('X')">X</button>
-                <button id ="teclaW"onclick="verificaLetraEscolhida('W')">W</button>
-                <button id ="teclaY"onclick="verificaLetraEscolhida('Y')">Y</button>
-                <button id ="teclaZ"onclick="verificaLetraEscolhida('Z')">Z</button>
-                <button id ="teclaÇ"onclick="verificaLetraEscolhida('Ç')">Ç</button>
-            </div>
-            <div class="teclas">
-                <button id="botao">REINICIAR</button> 
-            </div>
-                        
-        </div>
-        <div id="categoria">
-            CATEGORIA 
-        </div>
-    </div>
-  
-  <style>
-    
-    *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+    <textarea type="text" id="cript" name="cript" cols="50" rows="20" placeholder="Digita aqui a mensagem a ser criptografada"></textarea>
+    <textarea type="text" id="descript" name="cript" cols="50" rows="20" placeholder="Digita aqui a mensagem a ser descriptografada"></textarea>
+    <img class="alura" src="https://trello.com/1/cards/627ab96c5cfb52798dc4d162/attachments/627ab96c5cfb52798dc4d324/download/1.PNG"height="450">
+    <br>
+    <p class="alerta">Digite apenas letras minúsculas e sem acento</p>
+    <p class="alerta">Ao escrever já criptograva automaticamente!<p>
+        <button  id = "btn" class="btnreflesh" onclick="window.location.reload()" >REFRESH</button>
+    <button  id = "btn2" class="bdescrip" >Descriptografar</button>
 
-body{
-    width: 100vw;
-    height: 90vh;
-    margin-top: 10px;
-    background-color: rgb(87, 87, 238);
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-#imagem{
-    background: url(https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca.png);
-    width: 240px;
-    height: 275px;
-    background-repeat: no-repeat;
-}
-
-#palavra-secreta{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 1em;
-    margin-top: 30px;
-}
-
-.letras{
-    width: 20px;
-    text-align: center;
-    border-bottom: 2px solid rgb(7, 246, 110);
-    color:black;
-    padding: 2px;
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-#teclado{
-    margin-top: 30px;
-
-}
-
-.teclas button{
-    width: 25px;
-    height: 25px;
-    margin: 1px;
-    border: 1px gray;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    box-shadow: 0px 2px 8px rgb(47, 47, 47);
-    color: rgb(5, 5, 137);
-    font-weight: 600;
-}
-
-.teclas button:disabled{
-    cursor: not-allowed;
-}
-
-.teclas button:hover{
-    transform: scale(1.5);
-}
-#botao{
-    margin-top: 10px;
-    width: 100px;
-}
-
-#categoria{
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    margin-top: 15px;
-}
-
-@media (min-width:321px) {
-    .teclas button{
-        width: 28px;
-        height: 28px;
-    }
-    #categoria{
-        font-size: 1.3em;
-    }
-    }
-
-    @media (min-width:376px) {
-        .teclas button{
-            width: 30px;
-            height: 30px;
-        }
-
-        #categoria{
-            font-size: 1.4em;
-        }
-
-        #palavra-secreta{
-            font-size: 1.3em;
-        }
-
-        .letras{
-            width: 25px;
-        }
-        }
-    
-        @media (min-width:426px) {
-            .teclas button{
-                width: 35px;
-                height: 35px;
-                font-size: 1.2em;
-            }
-            #botao{
-                width: 120px;
-            }
-            #categoria{
-                font-size: 1.5em;
-            }
-    
-            #palavra-secreta{
-                font-size: 1.5em;
-            }
-    
-            .letras{
-                width: 28px;
-            }
+        <style>
+            body{
+                background-color: rgb(185, 242, 224);
             }
 
-            @media (min-width:769px) {
-                .teclas button{
-                    width: 45px;
-                    height: 45px;
-                    font-size: 1.5em;
-                }
-                #botao{
-                    width: 150px;
-                }
-                #categoria{
-                    font-size: 1.8em;
-                }
+            .alura{
+                border-radius: 20px;
+
+            }
+
+            textarea{
+                width: 300px;
+                height: 400px;
+                border-radius: 5px;
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+
+            .alerta{
+                margin-left: 32px;
+                color: rgb(97, 93, 93);
+            }
+
+
+            button {
+                border:solid 1px black;
+
+            }
+
+            textarea{
+                border: solid 2px black;
+            }
+
+            .btnreflesh{
+                margin-left: 30px;
+                background-color: rgb(0, 139, 253);
+                border-radius: 5px;
+                cursor:pointer;
+                font-size: 30px;
+            }
+
+            .bdescrip{
+                margin-left: 220px;
+                background-color: rgb(0, 139, 253);
+                border-radius: 5px;
+                cursor:pointer;
+                font-size: 30px;
+            }
+
+        </style>
         
-                #palavra-secreta{
-                    font-size: 1.8em;
-                }
-        
-                .letras{
-                    width: 32px;
-                }
-                }
-    
-  </style>
+        <script>
 
-  
-  <script>
-    
-    var palavraSecretaCategoria;
-var palavraSecretaSorteada;
-var listaDinamica = [];
-var tentativas = 6;
-const palavras= [
-    palavra001={
-        nome:"IRLANDA",
-        categoria:"LUGARES"
-    },
-    palavra002={
-        nome:"BRASIL",
-        categoria:"LUGARES"
-    },
-    palavra003={
-        nome:"ABACAXI",
-        categoria:"COMIDA"
-    },
-    palavra004={
-        nome:"FEIJOADA",
-        categoria:"COMIDA"
-    },
-    palavra005={
-        nome:"HOLANDA",
-        categoria:"LUGARES"
-    },
-    palavra006={
-        nome:"CAVALO",
-        categoria:"LUGARES"
-    },
-    palavra007={
-        nome:"BORBOLETA",
-        categoria:"ANIMAL"
-    },
-    palavra008={
-        nome:"JAZZ",
-        categoria:"MUSICA"
-    },
-    palavra009={
-        nome:"BEATLES",
-        categoria:"MUSICA"
-    },
-    palavra010={
-        nome:"PAGODE",
-        categoria:"MUSICA"
-    },
-    palavra011={
-        nome:"PIPA",
-        categoria:"OBJETO"
-    },
-    palavra0012={
-        nome:"CANECA",
-        categoria:"OBJETO"
-    },
-    palavra013={
-        nome:"CHINA",
-        categoria:"LUGARES"
-    },
-    palavra014={
-        nome:"JABUTICABA",
-        categoria:"COMIDA"
-    },
-    palavra015={
-        nome:"COELHO",
-        categoria:"ANIMAL"
-    }
-];
-
-function criarPalavraSecreta(){
-    const indexPalavra = parseInt(Math.random()*palavras.length)
-
-    palavraSecretaSorteada = palavras[indexPalavra].nome;
-    palavraSecretaCategoria = palavras[indexPalavra].categoria;
-    montarPalavraNaTela();
-    
+var i = 0;
+var lista = [];
+function verificacrip(x){
+    console.log(x);
+    limpar;
+    imprime(x);
 }
 
-function montarPalavraNaTela(){
-    const categoria = document.getElementById("categoria");
-    categoria.innerHTML = palavraSecretaCategoria;
+function limpar(){
+    document.getElementById("descript").value = "";
+}
 
-    const palavraTela = document.getElementById("palavra-secreta");
-    palavraTela.innerHTML = "";
-
-    for( i=0; i<palavraSecretaSorteada.length; i++){
-        if(listaDinamica[i] == undefined){
-            listaDinamica[i]= "&nbsp;";
-            palavraTela.innerHTML = palavraTela.innerHTML + "<div class='letras'>"+ listaDinamica[i] +"</div>"
-        } else{
-            palavraTela.innerHTML = palavraTela.innerHTML + "<div class='letras'>"+ listaDinamica[i] +"</div>"
-
+function imprime(lista1){
+    var aux1 = [];
+    var aux2 = [];
+    var aux3 = [];
+    aux2 = lista1;
+    var n = 0;
+        for(i=0; i < aux2.length; i++){
+            if(aux2[n] == "e"){
+                    aux3.push("enter");
+                    console.log("1 " + aux3);
+                    n = n+1;
+            //escreve a variavel e não a lista
+                }else if(aux2[n] == "a"){
+                    aux3.push("ai");
+                    console.log("2 " + aux3);
+                    n = n+1;
+            //escreve a variavel e não a lista
+                    } else if(aux2[n] == "i"){
+                        aux3.push("imes");
+                        console.log("3 " + aux3);
+                        n = n+1;
+                //escreve a variavel e não a lista
+                        }else if(aux2[n] == "o"){
+                            aux3.push("ober");
+                            console.log("4 " + aux3);
+                            n = n+1;
+                    //escreve a variavel e não a lista
+                            }else if(aux2[n] == "u"){
+                                    aux3.push("ufat");
+                                    console.log("5 " + aux3);
+                                    n = n+1;
+                            //escreve a variavel e não a lista
+                                }else{
+                                        aux3.push(aux2[n]);
+                                        console.log("4 " + aux3);
+                                        n = n+1;
+                                //escreve a variavel e não a lista
+                                }
         }
-    }
+    return finalcrip(aux3);
 }
 
-function verificaLetraEscolhida(letra){
-    document.getElementById("tecla" + letra).disabled = true;
-    if(tentativas > 0){
-        mudarStyleLetra("tecla" + letra);
-        comparaListas(letra);
-        montarPalavraNaTela();
-    }
- 
-
+function finalcrip(acabar){
+    var aux = acabar.join([separador = '']);
+    document.getElementById('descript').innerHTML= aux;
 }
 
-function comparaListas(letra){
-    const posicao = palavraSecretaSorteada.indexOf(letra);
-    if(posicao < 0){
-        tentativas --;
-        carregaImagem();
+//-----------///-------------------------//////-----------------//////-----------------//////----------
 
-        if(tentativas == 0){
-            abreMens();
-        }
-    }else{
-        for(i=0;i < palavraSecretaSorteada.length; i++){
-            if(palavraSecretaSorteada[i] == letra){
-                listaDinamica[i] = letra;
+function verificadescrip(){
+    var listadescrip = '';
+    erase;
+    listadescrip = document.getElementById("descript").value;
+    imprime1(listadescrip);
+}
+
+function erase(){
+    document.getElementById("descript").value = "";
+}
+
+function imprime1(lista2){
+    var aux1 = [];
+    var aux2 = [];
+    var aux1 = lista2;
+    aux1 = aux1.toLowerCase();
+    var aux2 = aux1.split("");
+    var aux3= [];
+    var n = 0;
+    var k = 0;
+    console.log(aux2);
+    for(i=0; i <aux2.length; i++){
+        if(aux2[n] =="e"){
+            n = n+1;
+            if(aux2[n] =="n"){
+                n = n+1;
+                if(aux2[n] =="t"){
+                    n = n+1;
+                    if(aux2[n] =="e"){
+                        n = n+1;
+                        if(aux2[n] =="r"){
+                            aux3.push("e");
+                            n = n+1;
+
+                        }
+                    }
+                }
             }
+        }else if(aux2[n] =="a"){
+            n = n+1;
+                if(aux2[n] =="i"){
+                    aux3.push("a");
+                    n = n+1;
+                }
+        } else if(aux2[n] =="i"){
+            n = n+1;
+            if(aux2[n] =="m"){
+                n = n+1;
+                if(aux2[n] =="e"){
+                    n = n+1;
+                    if(aux2[n] =="s"){
+                            aux3.push("i");
+                            n = n+1;
+                    }
+                }
+            }
+        } else if(aux2[n] =="o"){
+            n = n+1;
+            if(aux2[n] =="b"){
+                n = n+1;
+                if(aux2[n] =="e"){
+                    n = n+1;
+                    if(aux2[n] =="r"){
+                            aux3.push("o");
+                            n = n+1;
+                    }
+                }
+            }
+        }else if(aux2[n] =="u"){
+            n = n+1;
+            if(aux2[n] =="f"){
+                n = n+1;
+                if(aux2[n] =="a"){
+                    n = n+1;
+                    if(aux2[n] =="t"){
+                            aux3.push("u");
+                            n = n+1;
+                    }
+                }
+            }
+        }else{
+            aux3.push(aux2[n]);
+            console.log("4 " + aux3);
+            n = n+1;
         }
-    }
-    let vitoria = true;
-    for(i=0;i < palavraSecretaSorteada.length; i++){
-        if(palavraSecretaSorteada[i] != listaDinamica[i]){
-            vitoria = false;
+
+    } 
+
+    return final(aux3);
+
+}
+
+function final(acaba){
+    console.log("lista " +acaba);
+    var aux = acaba.join([separador = '']);
+    document.getElementById('cript').innerHTML= aux;
+}
+
+
+
+const criptInput = document.querySelector("#cript");
+
+criptInput.addEventListener("keypress",function(e,char){
+        if(!checkChar1(e)){
+            e.preventDefault();
         }
+
+    });
+
+function checkChar1(e){
+
+    const char = String.fromCharCode(e.keyCode);
+    const pattern ='[a-z0-9 ]';
+    if(char.match(pattern)){
+        console.log(char);
+        lista.push(char);
+        verificacrip(lista);
+        return true;
     }
-
-    if(vitoria == true){
-        tentativas = 0;
-        alert("Acertou! a palavra era: " + palavraSecretaSorteada);
-    }
-
+    //----------//----------//
 }
 
-function mudarStyleLetra(tecla){
-    document.getElementById(tecla).style.background = "#666";
-    document.getElementById(tecla).style.color = "#fff";
-}
+btn2.onclick = verificadescrip, erase;
 
-function carregaImagem() {
-    switch(tentativas){
-        case 5:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca01.png')";
-            break;
-        case 4:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca02.png')";
-            break;
-        case 3:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca03.png')";
-            break;
-        case 2:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca04.png')";
-            break;
-        case 1:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca05.png')";
-            break;
-        case 0:
-            document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca06.png')";
-            break;
-        default:
-                document.getElementById("imagem").style.background = "url('https://raw.githubusercontent.com/DntasDaniel/jogoDaForca/master/img/forca.png')";
-                break;
-    
-}
-}
+        </script>
 
-function abreMens(){
-    alert("perdeu a palavra era "+ palavraSecretaSorteada);
-}
-
-let botaoReinicia = document.querySelector("#botao");
-botaoReinicia.addEventListener("click",function(){
-    location.reload();
-});
-criarPalavraSecreta();
-
-    
-  </script>
 </body>
 </html>
